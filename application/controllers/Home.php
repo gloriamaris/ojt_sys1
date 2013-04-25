@@ -4,11 +4,7 @@
 	1. The Home controller is composed of different functions that can be viewed in
 		the Home page of the user.
 */
-	
 class Home extends CI_Controller {
-
-	public $number;
-	public $data;
 	
 	public function __construct() {
 	
@@ -24,7 +20,7 @@ class Home extends CI_Controller {
 		redirect('Home/Procurement');	
 	}
 	
-	function procurement() {
+	function procurement() {	
 	
 		$this->load->view('includes/user_header');
 		
@@ -67,23 +63,10 @@ class Home extends CI_Controller {
 	
 		$number = $this->input->post('link');
 		$data['script'] = $this->Home_Model->get_script($number);
-		
-		$config = array();
-		$config['base_url'] =site_url('Home/googleEarth').'/';
-		$config['total_rows'] = $this->db->get('comments')->num_rows();
-		$config['per_page'] = 2;
-		$config['full_tag_open'] = '<div id="pagination"><br><center>';
-		$config['full_tag_close'] = '</br></center></div>';
-
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		
-		$data['records'] = $this->Home_Model->viewComments($config['per_page'], $page);
-		$data['links'] = $this->pagination->create_links();
-
 	
+		$data['records'] = $this->Home_Model->viewComments($number);
+		
 		$this->load->view('user_googleEarth.php', $data);
-	
 	}
 	
 	
@@ -99,27 +82,27 @@ class Home extends CI_Controller {
 		
 		$email_address=$this->input->post('email_address');
 		
-		if ($this->form_validation->run() == FALSE)
-		{
-			
-			echo "<center>Email Required</center>";
-			echo $number;
-			$this->load->view('user_googleEarth.php', $data);
+		if ($this->form_validation->run() == FALSE){
+		?>
+			<script>
+					var msg = 'Email Address is required!'
+					alert(msg);
+					history.go(-1);
+			</script>
+		<?php
+			//$this->load->view('user_googleEarth.php',$this->copy);
 		}	
 		
 		else
-		{
-			
-				
+		{			
 			if(valid_email($email_address)) {
 	
-				echo "<center>Comment Added</center>";
-				$name=$this->input->post('name');
-				$comment=$this->input->post('comment');
-			
+				$name = $this->input->post('name');
+				$comment = $this->input->post('comment');
+				$sp_number = $this->input->post('sp_num');
 				if($this->input->post('submit'))
 				{
-					$this->Home_Model->processComment($name,$email_address,$comment);
+					$this->Home_Model->processComment($name,$email_address,$comment,$sp_number);
 					
 				}
 			}
@@ -127,14 +110,16 @@ class Home extends CI_Controller {
 			else{
 			?>
 				<script>
-					var msg = 'Search returned 0 results'
+					var msg = 'Please input a valid email address!'
 					alert(msg);
+					history.go(-1);
 				</script>
+				
 			<?php
+			
 			}
 			
 		}
-			//$this->load->view('user_googleEarth.php', $data);
 		
 	}
 	
@@ -149,13 +134,10 @@ class Home extends CI_Controller {
 	
 		$this->load->view('includes/user_header');
 		
-		$month = $_REQUEST['month'];
-		
+		$month = $_REQUEST['month'];		
 		$result['records'] = $this->Home_Model->filterMonth($month);
 		
-		$this->load->view('search_archive.php', $result);
-		
-		$this->load->view('includes/footer');
+		$this->load->view('search_archive.php', $result, $month);
 	}
 	
 }

@@ -3,8 +3,7 @@
         <div class="large-12 hide-for-small">
  
           <div id="featured">
-              <img src="http://placehold.it/1200x200&text=Slide Image" alt="slide image">
-		  <hr/>
+               <center><img src="http://localhost/PRDP/misc/img/banner3.gif" alt="slide image" class="v"></center>
 		  </div>
 	
         </div>
@@ -15,43 +14,53 @@
 				echo $no->google_earth_link;
 			endforeach;
 			endif;
+			$sp_number = $this->input->post('link'); 
 		?>
 
 	  <article>
-		<h3>Comments: </h3>
+	  
+		<h3 class="g">Comments </h3>
 		
-		<?php if(isset($records)): foreach($records as $row): ?>
+		<?php 
+			if(!empty($records)){ 
+				foreach($records as $row){ 
+		?>
 		
-			<p><b>Name: </b> <?php echo $row->name; ?>
-			<p><b>Comment: </b> <?php echo $row->comment; ?>
-			<hr/>
+				<p><b>Name: </b> <?php echo $row->name; ?>
+				<p><b>Date: </b> <?php echo $row->date_posted; ?>
+				<p><b>Comment: </b> <?php echo $row->comment; ?>
+				<hr/>
 		
-		<?php endforeach; ?>
-		<?php echo $links; ?>
-		<?php endif;?>
+		<?php 
+				}
+			}
+			else{
+				echo 'No comments';
+			}
+		?>
 		
-		<hr/>
-		<h3>Write a comment </h3>
+		
+		<center><h3 class="g">Write a comment </h3></center>
+		
 		<div class="row">
-		  <?php echo validation_errors(); ?>
-		  <?php echo form_open('Home/savecomment');?>
-		  <input class="h" type="textarea" placeholder="Name (Optional)" name="name">
-		  <br/><br/>
-		  <input class="h" type="textarea" placeholder="E-mail Address (Required)" name="email_address">
-          <br/><br/>
-		  <textarea class="b" name="comment"> </textarea>
-		  <input class="small button push-8" type="submit" value="submit" name="submit">
-		  
-		  <?php echo form_close(); ?>
-		  <hr/>
-		  
-		  
-        </div>
+		
+			<?php 
+				echo validation_errors(); 
+				echo form_open('Home/savecomment');
+			?>
+				
+			  <input class="h" type="textarea" placeholder="Name (Optional)" name="name"/>
+			  <br/><br/>
+			  <input class="h" type="textarea" placeholder="E-mail Address (Required)" name="email_address"/>
+			  <br/><br/>
+			  <textarea class="b" name="comment"> </textarea>
+			  <input type="hidden" value=<?php echo $sp_number; ?> name="sp_num"/>
+			  <input class="small button push-8" type="submit" value="submit" name="submit"/>
+			<?php echo form_close(); ?>
+ 		  <hr/>
+		</div>
 		
 	  </article>
-	  
-	  
-	  
 	  
 	  <?php $this->load->view('includes/admin_philgeps'); ?>
 	  <?php $this->load->view('includes/footer'); ?>

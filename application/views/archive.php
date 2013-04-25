@@ -10,13 +10,13 @@
 		</a>  
 			<ul class="dropdown-menu">  
 				<li data-filter-camera-type="all"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=05>May</a></li>  
-				<li data-filter-camera-type="Alpha"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=06>June</a></li>  
-				<li data-filter-camera-type="Zed"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=07>July</a></li>  
-				<li data-filter-camera-type="Bravo"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=08>August</a></li>  
-				<li data-filter-camera-type="Bravo"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=09>September</a></li>  
-				<li data-filter-camera-type="Bravo"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=10>October</a></li>  
-				<li data-filter-camera-type="Bravo"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=11>November</a></li>  
-				<li data-filter-camera-type="Bravo"><a href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=12>December</a></li>  
+				<li data-filter-camera-type="Alpha"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=06>June</a></li>  
+				<li data-filter-camera-type="Zed"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=07>July</a></li>  
+				<li data-filter-camera-type="Bravo"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=08>August</a></li>  
+				<li data-filter-camera-type="Bravo"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=09>September</a></li>  
+				<li data-filter-camera-type="Bravo"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=10>October</a></li>  
+				<li data-filter-camera-type="Bravo"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=11>November</a></li>  
+				<li data-filter-camera-type="Bravo"><a data-toggle="tab" href=http://localhost/PRDP/index.php/Home/filter_by_month?&month=12>December</a></li>  
 
 			</ul>  
 	</li>

@@ -52,32 +52,44 @@ class Home_Model extends CI_Model {
 			return FALSE;
 	}
 
-	function viewComments($limit, $start) {
+	function viewComments($number) {
 		
-		$query = $this->db->get('comments', $limit, $start);
+		$this->db->select('*');
+		$this->db->from('comments');
+		$this->db->where('sp_number', $number);
+		$query = $this->db->get();
 		
-		if ($query->num_rows > 0){
+		if ($query->num_rows() > 0){
 			foreach ($query->result() as $row) {
 				$data[] = $row;
 			}
-			
 			return $data;
 		}
 		else return FALSE;
 
 	}
 	
-	function processComment($name,$email_address,$comment){		
+	function processComment($name,$email_address,$comment, $sp_number){		
 		
-		$data=array(
-			'name'=>$name,
+		$current_date = date('Y-m-d');
+		$data = array(
+			'sp_number' => $sp_number,
+			'name' => $name,
+			'date_posted' => $current_date,
 			'email_address'=>$email_address,
 			'comment'=>$comment,
 		);
 		
 		$query=$this->db->insert('comments', $data);
+		
 		if($query){
-			redirect('Home/googleEarth');
+			?>
+				<script>
+					var msg = 'Your comment has been added.'
+					alert(msg);
+					window.location = "Procurement";
+				</script>
+			<?php
 		}
 
 	}
@@ -102,10 +114,12 @@ class Home_Model extends CI_Model {
 		$this->db->where("valid_period LIKE '%-$month-%'");
 		$query = $this->db->get();
 
-		if($query->num_rows()>0)
-				return $query->result();
-		else
-				return FALSE;
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return FALSE;
+		}
 
 	}
 }

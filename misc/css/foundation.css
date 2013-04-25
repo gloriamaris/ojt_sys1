@@ -9,6 +9,22 @@
 	height:2em;
 	}
 
+.v {
+	position:relative;
+	margin-top:0em;
+	margin-bottom:-5em;
+	width:60%;
+	z-index:-1;
+}
+
+#v {
+	position:relative;
+	margin-top:0em;
+	margin-bottom:-5em;
+	width:60%;
+	z-index:-1;
+}
+
 .h {
 	width:20em;
 	height:2em;
@@ -16,7 +32,8 @@
 	}
 	
 .g {
-	text-shadow: 2px 2px 0.2em #444;
+	color:#006C51;
+	text-shadow: 1px 1px 0.2em #444;
 	margin-top:1em;
 	margin-bottom:1em;
 }
@@ -29,7 +46,7 @@
 	box-shadow: 2px 2px 2px #080;
 }	
 
-#f{
+#f {
 	position:relative;
 	margin-top:1.25em;
 }

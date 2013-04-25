@@ -51,12 +51,16 @@ session_start();
 			$crud->set_theme('datatables');
 			
 			$crud->set_table('procurement');
-			$crud->columns('sp_number','sp_name', 'sp_description','municipality', 'province', 'valid_period', 'pdb_upload', 'google_earth_link');
+			$crud->columns('sp_number','sp_name', 'sp_description','municipality', 'province', 'start_date' ,'valid_period', 'pdb_upload', 'google_earth_link');
 			$crud->unset_jquery();
 			$crud->set_field_upload('pdb_upload','misc/pdf/');
 			
 			$crud->set_subject('Form');
-			$crud->fields('sp_number','sp_name', 'sp_description','pdb_upload', 'google_earth_link');
+			$crud->fields('sp_number','sp_name', 'sp_description', 'municipality', 'province', 'start_date' ,'valid_period','pdb_upload', 'google_earth_link');
+			$crud->display_as('sp_name', 'Sub-project Name');
+			$crud->display_as('sp_description', 'Description');
+			$crud->display_as('pdb_upload', 'PDF link');
+			$crud->display_as('google_earth_link', 'Google Earth View');
 			$crud->required_fields('sp_number','sp_name', 'valid_period', 'pdb_upload');
 			$crud->unset_texteditor('pdb_upload', 'google_earth_link','sp_description');
 			$output = $crud->render();
@@ -121,7 +125,8 @@ session_start();
 			$crud->set_theme('datatables');
 			
 			$crud->set_table('comments');
-			$crud->columns('comment_number','name', 'email_address','comment');
+			$crud->columns('sp_number','comment_number','name', 'date_posted', 'email_address','comment');
+			$crud->display_as('sp_number', 'Comment ID');
 			$crud->unset_add();
 			$crud->unset_jquery();
 			$crud->set_subject('Form');
