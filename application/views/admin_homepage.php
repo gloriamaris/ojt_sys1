@@ -13,7 +13,9 @@
 	
 		<center>
 			<div class="large-2">
-             <?php echo $output; ?>	
+             <?php echo $output; 
+					echo 'hi output';
+			 ?>	
             </div>
 		</center>
 	<hr/>

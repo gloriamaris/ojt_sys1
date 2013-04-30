@@ -2,7 +2,7 @@
         <div class="large-12 hide-for-small">
  
           <div id="featured">
-              <center><img src="http://localhost/PRDP/misc/img/banner3.gif" alt="slide image" class="v"></center>
+              <center> <a href="http://localhost/PRDP/"><img src="http://localhost/PRDP/misc/img/header.gif" class="v"></a></center>
 		  <hr/>
 		  </div>
 		
@@ -71,8 +71,10 @@
 					  <td><center> $data->start_date </center></td>
 					  <td><center> $data->valid_period </center></td>"
 		?>
-				   <td><?php echo validation_errors(); echo form_open('Home/googleEarth'); ?><center> <label>Google Earth</label><input type = "image" value = "<?php echo $data->sp_number;?>" name = 'link' src="http://localhost/PRDP/misc/img/gearth.png" height=50></center></td>
-				   <td><a href=http://localhost/PRDP/index.php/Home/downloadFile?&sp_number=<?php echo $data->sp_number?>> <label><center> Download PDF </label><br/> <img src="http://localhost/PRDP/misc/img/download-icon.png" style="width: 40%;" /> </center> </a> </td>
+				   
+				  <td><?php echo validation_errors(); echo form_open('Home/googleEarth'); ?><center><br/><input type = "image" value = "<?php echo $data->sp_number;?>" name = 'link' src="http://localhost/PRDP/misc/img/gearth.png" height=48 style="margin-top:-1em;"><a> Google Earth </a><br/></center></td>
+				   <td><a href=http://localhost/PRDP/index.php/Home/downloadFile?&sp_number=<?php echo $data->sp_number?>> <center> <img src="http://localhost/PRDP/misc/img/download-icon.png" style="width: 55%;"/><br/>Download PDF <br/> </center> </a> </td>
+					
 						<?php		  
 					"</tr>";					
 			}

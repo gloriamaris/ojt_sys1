@@ -27,6 +27,13 @@ session_start();
 		
 		}
 		
+		function admin() {
+			
+			$this->_example_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
+			redirect('admin/form');
+		
+		}
+		
 		function check_login(){
 			if($this->session->userdata('logged_in')) {
 				$session_data = $this->session->userdata('logged_in');
@@ -51,18 +58,18 @@ session_start();
 			$crud->set_theme('datatables');
 			
 			$crud->set_table('procurement');
-			$crud->columns('sp_number','sp_name', 'sp_description','municipality', 'province', 'start_date' ,'valid_period', 'pdb_upload', 'google_earth_link');
+			$crud->columns('sp_number','sp_name', 'sp_description','municipality', 'province', 'start_date' ,'valid_period', 'pdb_upload', 'google_earth_link','philgeps_link');
 			$crud->unset_jquery();
 			$crud->set_field_upload('pdb_upload','misc/pdf/');
 			
 			$crud->set_subject('Form');
-			$crud->fields('sp_number','sp_name', 'sp_description', 'municipality', 'province', 'start_date' ,'valid_period','pdb_upload', 'google_earth_link');
+			$crud->fields('sp_number','sp_name', 'sp_description', 'municipality', 'province', 'start_date' ,'valid_period','pdb_upload', 'google_earth_link','philgeps_link');
 			$crud->display_as('sp_name', 'Sub-project Name');
 			$crud->display_as('sp_description', 'Description');
 			$crud->display_as('pdb_upload', 'PDF link');
 			$crud->display_as('google_earth_link', 'Google Earth View');
 			$crud->required_fields('sp_number','sp_name', 'valid_period', 'pdb_upload');
-			$crud->unset_texteditor('pdb_upload', 'google_earth_link','sp_description');
+			$crud->unset_texteditor('pdb_upload', 'google_earth_link','sp_description','philgeps_link');
 			$output = $crud->render();
 			
 			$this->_example_output($output);
@@ -108,9 +115,23 @@ session_start();
 				}
 			}
 			else {
-				echo "<div class='push e' style='color:red;'>
-				<center>The passwords do not match. <center><br/><br/><br/></div>";
-				$this->load->view('admin_changePassword');
+			
+				$this->load->view('includes/admin_header');
+				echo "	<center> 
+					<div class='g span3 push-4'>
+						<h3>Change Password </h3>
+						</div>
+					</center> 
+					<hr/>";
+			?>
+				
+				<script>
+					var msg = 'The passwords do not match.'
+					alert(msg);
+					history.go(-1);
+				</script>
+			
+			<?php
 			}
 
 		}

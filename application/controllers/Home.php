@@ -59,7 +59,7 @@ class Home extends CI_Controller {
 	function googleEarth() {
 	
         $this->load->library('pagination');
-		$this->load->view('includes/user_header');
+		$this->load->view('includes/user_header_googleEarth');
 	
 		$number = $this->input->post('link');
 		$data['script'] = $this->Home_Model->get_script($number);

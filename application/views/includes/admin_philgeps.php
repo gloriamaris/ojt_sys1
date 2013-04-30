@@ -15,9 +15,6 @@
 		<small>No. There may be internet facilities already in place in your area, such as internet cafes which you can use.</small>
 		<li><a href="#">What is PHILGEPS?</a></li></label>
 		<small>Failure of an agency to post its bid notices in the PhilGEPS opens the bidding process to question because of failure to comply with the procurement law.</small>
-	  </ul>
-      
-      <p><img src="http://placehold.it/320x240&text=Ad" /></p>
-        
+	  </ul>        
     </div>
  

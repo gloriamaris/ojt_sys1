@@ -3,7 +3,7 @@
         <div class="large-12 hide-for-small">
  
           <div id="featured">
-               <center><img src="http://localhost/PRDP/misc/img/banner3.gif" alt="slide image" class="v"></center>
+              <center> <a href="http://localhost/PRDP/"><img src="http://localhost/PRDP/misc/img/header.gif" class="v"></a></center>
 		  </div>
 	
         </div>
@@ -62,7 +62,8 @@
 		
 	  </article>
 	  
-	  <?php $this->load->view('includes/admin_philgeps'); ?>
+	  <?php $this->load->view('includes/admin_googleEarth'); ?>
+	  
 	  <?php $this->load->view('includes/footer'); ?>
 	  </div>
 

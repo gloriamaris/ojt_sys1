@@ -4,7 +4,7 @@
         <div class="large-12 hide-for-small">
  
           <div id="featured">
-              <center><img src="http://localhost/PRDP/misc/img/banner3.gif" alt="slide image" class="v"></center>
+              <center> <a href="http://localhost/PRDP/"><img src="http://localhost/PRDP/misc/img/header.gif" class="v"></a></center>
 		  </div>
 		
         </div>
@@ -16,19 +16,31 @@
 
 		$month_number = $_REQUEST['month'];
 		switch($month_number){
-			case 05:
+			case 1:
+				$month = 'January';
+				break;
+			case 2:
+				$month = 'February';
+				break;
+			case 3:
+				$month = 'March';
+				break;
+			case 4:
+				$month = 'April';
+				break;
+			case 5:
 				$month = 'May';
 				break;
-			case 06:
+			case 6:
 				$month = 'June';
 				break;
-			case 07:
+			case 7:
 				$month = 'July';
 				break;
-			case 08:
+			case 8:
 				$month = 'August';
 				break;
-			case 09:
+			case 9:
 				$month = 'September';
 				break;
 			case 10:
@@ -38,7 +50,7 @@
 				$month = 'November';
 				break;
 			case 12:
-				$month = 'May';
+				$month = 'December';
 				break;
 		}
 	?>
@@ -57,12 +69,12 @@
 		<th> Philippine Bidding Documents </th>
 		
 		<?php
-		if(!empty($results)){
-			if ($current_date>$data->valid_period){
+		$current_date = date('Y-m-d');	
+		if(!empty($records)){
 			foreach ($records as $data):
+			if ($current_date>$data->valid_period){			
 				$start_date = $data->start_date;
-				$end_date = $data->valid_period;
-				$current_date = date('Y-m-d');			
+				$end_date = $data->valid_period;						
 		
 				echo "<tr>
 					<td><center> $data->sp_name </center></td>
@@ -78,18 +90,29 @@
 					
 			<?php		  
 				  "</tr>";	
-			endforeach;		
+			
 					
 			}
-		}
-		else{
+				
+		
+			else{
 			?>
 				<script>
 					var msg = 'No stored archives for this month!'
 					alert(msg);
 				</script>
 			<?php
+			}
+			endforeach;	
 		}
+			else{
+			?>
+				<script>
+					var msg = 'No stored archives for this month!'
+					alert(msg);
+				</script>
+			<?php
+			}
 			?>
 		</table>
 			<hr/>

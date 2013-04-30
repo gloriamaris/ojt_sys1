@@ -50,13 +50,14 @@ class Admin_Model extends CI_Model {
 		$this->db->update('user', $data);
 		
 		if($data['password']==$this->session->userdata('password')) {
-			echo "<div class='push e' style='color:blue;'>
-				<center>Update successful. Return to
-				<a href='http://localhost/PRDP/index.php/Admin/'></center>
-				home.
-				</a>
-				<br/><br/><br/><br/></div>";
-			$this->load->view('admin_changePassword');
+		?>
+				<div class='push e' style='color:blue;'>
+				<center>Update successful. Return to <a href=http://localhost/PRDP/index.php/Admin> home</a>.</center>
+				<br/><br/><br/><br/>
+				</div>
+		<?php
+
+			//$this->load->view('admin_changePassword');
 			
 		}
 		else return false;
